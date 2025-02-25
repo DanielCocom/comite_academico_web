@@ -1,11 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+
+        input,
+        button {
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="container">
+        <h2>Registro</h2>
+        <form onsubmit="register(event)">
+            <input type="text" id="newUsername" name="newUsername" placeholder="Nuevo Usuario" required>
+            <input type="password" id="newPassword" name="newPassword" placeholder="Nueva Contraseña" required>
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+    <script>
+        function register(event) {
+            event.preventDefault(); // Evita recargar la página
+            let newUser = document.getElementById('newUsername').value;
+            let newPass = document.getElementById('newPassword').value;
+
+            // Guardamos usuario y contraseña en localStorage (práctica insegura)
+            localStorage.setItem('user', newUser);
+            localStorage.setItem('pass', newPass);
+            alert('Usuario registrado!');
+        }
+    </script>
 </body>
+
 </html>

@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enviar mensajes</title>
+    <title>Enviar</title>
 </head>
+
 <body>
-    
+    <div class="container">
+        <h2>Comentarios</h2>
+        <input type="text" id="comment" placeholder="Escribe un comentario">
+        <button onclick="postComment()">Publicar</button>
+        <div class="messages" id="messages"></div>
+    </div>
+
+    <script>
+        function postComment() {
+            let comment = document.getElementById('comment').value;
+            let messages = document.getElementById('messages');
+
+            // Agrega comentarios sin sanitizar (vulnerable a XSS)
+            messages.innerHTML += `<p>${comment}</p>`;
+        }
+    </script>
 </body>
+
 </html>

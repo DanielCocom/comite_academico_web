@@ -1,11 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+
+        input,
+        button {
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="container">
+        <h2>Login</h2>
+        <form onsubmit="login(event)">
+            <input type="text" id="username" name="username" placeholder="Usuario" required>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
+        </form>
+    </div>
+    <script>
+        function login(event) {
+            event.preventDefault(); // Evita recargar la página
+            let user = document.getElementById('username').value;
+            let pass = document.getElementById('password').value;
+
+            // Comprobamos credenciales (práctica insegura)
+            if (user === localStorage.getItem('user') && pass === localStorage.getItem('pass')) {
+                alert('Login exitoso!');
+            } else {
+                alert('Usuario o contraseña incorrectos');
+            }
+        }
+    </script>
 </body>
+
 </html>

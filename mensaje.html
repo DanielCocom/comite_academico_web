@@ -15,6 +15,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .messages {
             margin-top: 20px;
             padding: 10px;
@@ -28,15 +29,18 @@
 <body class="bg-light">
     <div class="container">
         <h2 class="text-center">Comentarios</h2>
-        <div class="input-group mb-3">
-            <input type="text" id="comment" class="form-control" placeholder="Escribe un comentario">
-            <button class="btn btn-primary" onclick="postComment()">Publicar</button>
-        </div>
+        <form onsubmit="postComment(event)">
+            <div class="input-group mb-3">
+                <input type="text" id="comment" class="form-control" placeholder="Escribe un comentario" required>
+                <button type="submit" class="btn btn-primary">Publicar</button>
+            </div>
+        </form>
         <div class="messages p-3" id="messages"></div>
     </div>
 
     <script>
-        function postComment() {
+        function postComment(event) {
+            event.preventDefault();
             let comment = document.getElementById('comment').value;
             let messages = document.getElementById('messages');
 

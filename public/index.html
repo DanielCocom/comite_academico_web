@@ -53,15 +53,9 @@
           />
         </div>
         <button type="submit" class="btn btn-primary w-100">Registrar</button>
-        <button
-          type="button"
-          class="btn btn-secondary w-100 mt-2"
-          onclick="loginView()"
-        >
-          Iniciar Sesión
-        </button>
+        
       </form>
-      <p>Ya tengo una cuenta <a href="login.html">inicia sesión</a></p>
+      <p>Ya tengo una cuenta <a href="/view/login">inicia sesión</a></p>
     </div>
     <script>
       async function register(event) {
@@ -70,7 +64,7 @@
         let newUser = document.getElementById("newUsername").value;
         let newPass = document.getElementById("newPassword").value;
 
-        const response = await fetch("http://localhost:3000/register", {
+        const response = await fetch("http://localhost:3000/api/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username: newUser, password: newPass }),
@@ -78,26 +72,11 @@
 
         const data = await response.json();
         alert(data.message);
-        if (response.ok) window.location.href = "login.html";
+      
+        
       }
-      // permite registrar el mismo usuario
-      function IsUserRegister(username, password) {
-        // llamar cuando se registra un nuevo usuario
-        let user = localStorage.getItem("user");
-        let pass = localStorage.getItem("pass");
-        if (user != username || pass != password) {
-          //usuario no registrado
-          return false;
-        }
-        return true;
-      }
-      function registerSuccess() {
-        // llamar a la vista de mensajes
-        window.location.href = "mensaje.html";
-      }
-      function loginView() {
-        window.location.href = "login.html";
-      }
+    
+    
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
